@@ -33,3 +33,43 @@ h1 {
   padding: 5px;
   font-size: 19px;
 }
+
+/* Shop grid  */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 4fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease-in-out, box-shadow 0.5s ease-in-out;
+    cursor: pointer;
+    background-color: white;
+    padding: 2px;
+    border: 4px solid black;
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid black;
+}
+
+.product-title {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.product-price {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 15px 15px 5px 0;
+  font-weight: 600;
+}
