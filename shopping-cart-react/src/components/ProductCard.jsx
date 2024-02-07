@@ -1,8 +1,8 @@
 // eslint-disable-next-line react/prop-types
-function ProductCard({key, title, category, image, price}) {
+function ProductCard({id, title, image, price}) {
 
     return (
-    <div key={key} className="product">
+    <div id={id} className="product">
         <img className="product-image" src={image} alt={title} />
         <div className="product-title">{title}</div>
         <div className="product-price">{price}$</div>

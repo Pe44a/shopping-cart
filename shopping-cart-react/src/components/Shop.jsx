@@ -23,7 +23,6 @@ function Shop() {
   return (
     <>
       <NavBar />
-
       <div className="product-grid">
         {data.map((product) => (
           <>
