@@ -1,22 +1,16 @@
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import ProductCard from "./ProductCard";
+import fetchData from "./fetchProductsData";
+import { Outlet } from "react-router-dom";
 
 function Shop() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await fetch('https://fakestoreapi.com/products?limit=10');
-        const responseData = await response.json();
-        setData(responseData);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    }
-
-    fetchData();
+    fetchData()
+      .then(setData) // Update state on successful data retrieval
+      .catch(error => handleError(error)); // Handle errors
   }, []);
 
 
@@ -27,7 +21,7 @@ function Shop() {
         {data.map((product) => (
           <>
             <ProductCard
-              key = {product.id}
+              id = {product.id}
               title = {product.title}
               category = {product.category}
               image = {product.image}
@@ -36,6 +30,7 @@ function Shop() {
           </>
         ))}
       </div>
+      <Outlet/>
     </>
   );
 }
