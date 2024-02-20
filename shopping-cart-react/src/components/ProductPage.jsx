@@ -6,6 +6,7 @@ import fetchData from "./fetchProductsData"
 
 function ProductPage() {
     const [data, setData] = useState([]);
+    const [count, setCount] = useState(1);
 
     useEffect(() => {
         fetchData()
@@ -13,13 +14,28 @@ function ProductPage() {
           .catch(error => handleError(error)); // Handle errors
       }, []);
 
-    console.log(data)
     const { id } = useParams();
     const paramId = Number(id);
+
+    
+    function decrement () {
+        if(count > 1) {
+            let num = count;
+            num--;
+            setCount(num)
+        }
+    }
+
+    function increment () {
+        let num = count;
+        num++;
+        setCount(num)
+    }
 
     return (
     <>
         <NavBar />
+        {/* Renders only when there is something to render */}
         {data.length > 0 ? (
             <>
                 <div className="product-container">
@@ -30,6 +46,16 @@ function ProductPage() {
                         <div className="title">{data[paramId].title}</div>
                         <div className="price">{data[paramId].price}$</div>
                         <div className="description">{data[paramId].description}</div>
+
+                        <div className="add-button-container"> 
+                            <button id="add-item" className="button">Add item</button>
+                            <div className="item-amount">
+                                <button id="minus" className="button" onClick={decrement}>-</button>
+                                <input type="text" value={count} className="count-input" />
+                                <button id="plus" className="button" onClick={increment}>+</button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </>
