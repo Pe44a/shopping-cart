@@ -1,26 +1,21 @@
-    function uploadItemData (itemData, itemCount){
-        
-        // check if an item with the same ID exists in localStorage
-        const existingItem = localStorage.getItem(`${itemData.id}`);
-
-        if(existingItem) {
-            const parsedData = JSON.parse(existingItem);
-
-            // update the amount with the new itemCount
-            parsedData.amount += itemCount;
-
-            // store back data in localStorage
-            const updatedData = JSON.stringify(parsedData);
-            localStorage.setItem(`${itemData.id}`, updatedData);
-        } else {
-            //adding new value to itemData 
-            itemData.amount = itemCount
-            const data = JSON.stringify(itemData);
-
-            localStorage.setItem(`${itemData.id}`, data)
-        }
-
+function uploadItemData(itemData, itemCount) {
+    let existingData = JSON.parse(localStorage.getItem('itemData')) || [];
+  
+    // Check if an item with the same ID already exists in the array
+    const existingItemIndex = existingData.findIndex(item => item.id === itemData.id);
+  
+    if (existingItemIndex !== -1) {
+      // Update the amount of the existing item
+      existingData[existingItemIndex].amount += itemCount;
+    } else {
+      // Add the new item with the provided itemCount
+      itemData.amount = itemCount;
+      existingData.push(itemData);
     }
+  
+    // Store the updated data in localStorage
+    localStorage.setItem('itemData', JSON.stringify(existingData));
+  }
 
 
 

@@ -7,16 +7,14 @@ import { uploadItemData } from "../LocaleStorage";
 function ProductPage() {
     const [data, setData] = useState([]);
     const [count, setCount] = useState(1);
-    const [itemAdded, setItemAdded] = useState()
+    const { id } = useParams();
+    const paramId = Number(id);
 
     useEffect(() => {
         fetchData()
           .then(setData) // Update state on successful data retrieval
           .catch(error => handleError(error)); // Handle errors
       }, []);
-
-    const { id } = useParams();
-    const paramId = Number(id);
 
     
     function decrement () {
@@ -33,6 +31,7 @@ function ProductPage() {
         setCount(num)
     }
 
+    
     return (
     <>
         <NavBar />
