@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { json, useParams } from "react-router-dom";
 import NavBar from "./NavBar";
-import ProductCard from "./ProductCard";
 import fetchData from "./fetchProductsData"
+import { uploadItemData } from "../LocaleStorage";
 
 function ProductPage() {
     const [data, setData] = useState([]);
     const [count, setCount] = useState(1);
+    const [itemAdded, setItemAdded] = useState()
 
     useEffect(() => {
         fetchData()
@@ -43,16 +44,17 @@ function ProductPage() {
                         <img className="page-image" src={data[paramId].image} alt="product" />
                     </div>
                     <div className="product-info">
+
                         <div className="title">{data[paramId].title}</div>
                         <div className="price">{data[paramId].price}$</div>
                         <div className="description">{data[paramId].description}</div>
 
                         <div className="add-button-container"> 
-                            <button id="add-item" className="button">Add item</button>
+                            <button id="add-item" className="button" onClick={() => uploadItemData(data[paramId], count)}>Add item</button>
                             <div className="item-amount">
-                                <button id="minus" className="button" onClick={decrement}>-</button>
-                                <input type="text" value={count} className="count-input" />
-                                <button id="plus" className="button" onClick={increment}>+</button>
+                                <button id="minus" className="button" onClick={() => decrement()}>-</button>
+                                    <input type="text" value={count} className="count-input" />
+                                <button id="plus" className="button" onClick={() => increment()}>+</button>
                             </div>
                         </div>
 
