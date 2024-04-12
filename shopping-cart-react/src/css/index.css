@@ -40,6 +40,10 @@ a {
   font-size: 19px;
 }
 
+.nav-bar a {
+  display: flex;
+}
+
 /* Shop grid  */
 
 .product-grid {
@@ -262,28 +266,6 @@ a {
 .checkout-btn:active {
   background-color: #666;
 }
-
-/* Animation */
-
-.checkout-animation {
-  animation: checkout-confirm 1s ease-in-out;
-}
-
-@keyframes checkout-confirm {
-  0% {
-    transform: scale(1);
-    background-color: #000;
-  }
-  50% {
-    transform: scale(1.1);
-    background-color: #3cb371; /* Green for success */
-  }
-  100% {
-    transform: scale(1);
-    background-color: #000;
-  }
-}
-
 
 /* Input */
 
