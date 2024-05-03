@@ -20,7 +20,7 @@ function NavBar() {
           <Link to="/">Home</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/cart">
-            Shop
+            Cart
            <img src={itemAdded} alt="" /> 
           </Link>
         </div>
