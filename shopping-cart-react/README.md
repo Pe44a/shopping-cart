@@ -1,8 +1,22 @@
-# React + Vite
+# Shopping Cart Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shopping website that allows users to view items, add those items in a cart, see the total price, and proceed to checkout.
 
-Currently, two official plugins are available:
+Check out website here: https://shopping-cart-beta-ecru.vercel.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+-Displays the items in the cart, including the product image, title, category, price, and quantity
+-Shows an empty cart message with a link to the shop page if the cart is empty
+-Provides a "Checkout" button to complete the purchase
+-Clears the cart data from local storage upon successful checkout
+
+## Dependencies
+
+React
+react-router-dom
+Vite
+
+## Data Storage
+
+The component uses the browser's local storage to persist the cart data. The cart items are stored under the key 'itemData' in JSON format. The data is retrieved and parsed when the component mounts and is updated whenever the checkout is completed.
