@@ -2,7 +2,7 @@ import NavBar from "./NavBar"
 import { Link } from "react-router-dom"
 
 function Cart() {
-  const cartItems = JSON.parse(localStorage.getItem('itemData'));
+  const cartItems = JSON.parse(localStorage.getItem('itemData')) || [];
 
   function handleCheckout() {
     let data = JSON.parse(localStorage.getItem('itemData'))
